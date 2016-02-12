@@ -1,5 +1,6 @@
 include:
   - tools
+  - users
 
 nexus-server:
   archive.extracted:
@@ -9,9 +10,14 @@ nexus-server:
     - archive_format: zip 
     - require:
       - pkg: install-unzip
+    - user: nexus-user
+    - group: build
+
 run-nexus:
-  cmd.wait:
-    - watch: 
+  cmd.run:
+    - name: /srv/nexus/nexus-2.12.0-01/bin/nexus start
+    - require:
       - archive: nexus-server
-    - cwd: /srv/nexus/nexus-2.12.0-01-bundle/bin
-    - name: nexus start
+      - user: nexus-user
+    - user: nexus-user
+    - group: build
