@@ -11,7 +11,6 @@ nexus-user:
     - require:
       - group: nexus
       - group: build
-
 nexus:
   group.present:
     - gid: 4000
