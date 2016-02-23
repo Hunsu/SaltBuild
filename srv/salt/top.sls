@@ -1,3 +1,8 @@
 base:
   '*':
-    - common
+    - users
+    - tools
+    - jenkins
+    - nexus
+    - nginx
+   
